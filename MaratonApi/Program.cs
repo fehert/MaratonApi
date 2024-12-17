@@ -1,4 +1,8 @@
 
+using MaratonApi.Models;
+using MaratonApi.Repositories.Interfaces;
+using MaratonApi.Repositories.Services;
+
 namespace MaratonApi
 {
     public class Program
@@ -6,6 +10,9 @@ namespace MaratonApi
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddDbContext<MaratonvaltoContext>();
+            builder.Services.AddScoped<FutokInterface, FutokService>();
+            builder.Services.AddScoped<EredmenyekInterface, EredmenyekService>();
 
             // Add services to the container.
 
